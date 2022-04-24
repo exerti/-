@@ -1,0 +1,27 @@
+class Solution {
+public:
+    // 如果是我的话，直接记录遍历，记录表的数有大于2的直接输出bool
+    // 优化一点，排序后看相邻元素是否一样，若有一样的就输出bool
+    bool containsDuplicate(vector<int>& nums) {
+       sort(nums.begin(),nums.end());
+       for(int i=0;i<nums.size()-1;++i)//判断到n-2 就可以了
+       {
+           if(nums[i]==nums[i+1]) return true;
+       }
+       return false;
+    }
+};
+、、、、、、、、、、、、、、、、、、、、、、、、、
+class Solution {
+public:
+   //哈希表来插入 ,判断若哈希表中已经有了该元素，就输出bool
+    bool containsDuplicate(vector<int>& nums) {
+     unordered_set <int> s;
+     for(int x:nums)
+     {
+         if(s.find(x)!=s.end()) return true;
+         s.insert(x);
+     }
+    return false;
+    }
+};
