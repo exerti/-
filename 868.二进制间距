@@ -1,0 +1,18 @@
+class Solution {
+public:
+//一个指针，一个记录 , last对第一个出现1的位置记录，求最大的间距，每次的状态更新遍历就行
+    int binaryGap(int n) {
+     int last=-1,ans=0;
+     for(int i=0;n;++i)
+     {
+         if(n&1)     // n&1  按位与需要加强一下
+         {
+             if(last!=-1)
+             ans=max(ans,i-last);
+             last=i;  
+         }
+         n>>=1;     //移位运算符
+     }
+     return ans;
+    }
+};
